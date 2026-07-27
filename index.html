@@ -1,501 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#05090d" />
-  <meta name="description" content="Terminal Atlas — a calm, growth-focused trading decision workspace." />
-  <title>Terminal Atlas — Build 0.3</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#07110f" />
+<title>Terminal V2 — Atlas Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="welcome-screen" class="welcome-screen">
-    <div class="welcome-glow"></div>
-    <div class="welcome-content">
-      <div class="welcome-logo">
-        <svg viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="32" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
-          <path d="M25 32h50M50 7v50M31 17c12 8 26 8 38 0M31 47c12-8 26-8 38 0" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".75"/>
-          <path d="M35 43V31M45 40V24M55 36V19M65 31V14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-          <path d="M30 72c8-12 11-17 20-18 9 1 12 6 20 18M28 61 14 43M72 61l14-18M38 88l7-17h10l7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="50" cy="61" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-        </svg>
-      </div>
-      <div class="welcome-kicker">TERMINAL · BUILD 0.3</div>
-      <h1>Trade with a plan.<br><span>Grow with Atlas.</span></h1>
-      <p>A calm workspace designed to help you make better trading decisions—not simply more trades.</p>
-      <button id="enter-terminal" class="primary-button welcome-button">Enter Terminal</button>
-      <small>Prototype data only · No brokerage connection</small>
+<div class="glow glow-a"></div><div class="glow glow-b"></div>
+<div class="shell">
+<header>
+  <div class="brand"><div class="mark">A</div><div><b>TERMINAL</b><small>ATLAS</small></div></div>
+  <div class="header-actions"><span class="live"><i></i> LIVE</span><button class="icon">◌</button><span class="avatar">LF</span></div>
+</header>
+<main>
+  <section class="hero">
+    <div><p class="eyebrow">YOUR MORNING, PREPARED</p><h1 id="greeting">Good morning, Leo.</h1><p class="muted"><span id="liveDate"></span> · <span id="liveTime"></span></p></div>
+    <article class="market-clock">
+      <div class="status"><span id="marketDot"></span><div><small id="marketLabel">MARKET STATUS</small><b id="marketStatus">Checking…</b></div></div>
+      <div id="marketCountdown" class="countdown">--:--:--</div><p id="marketSubtext">Eastern Time</p>
+    </article>
+  </section>
+
+  <section class="brief-card">
+    <div class="brief-icon">◐</div>
+    <div><p class="eyebrow">ATLAS MORNING BRIEF</p><h2>Your market day in under one minute.</h2><p>Overnight moves, your watchlist, major events, and one clear focus before the bell.</p></div>
+    <div class="brief-actions"><button id="startBrief" class="primary">▶ Start briefing</button><button id="duration" class="secondary">1 min</button></div>
+  </section>
+
+  <section class="two-col">
+    <article class="card"><div class="card-head"><div><p class="eyebrow">ATLAS OUTLOOK</p><h2>Moderately Bullish</h2></div><div class="ring"><span>78%</span></div></div><p class="body-copy">Technology is leading before the open, but lighter volume means confirmation still matters.</p><div class="card-foot"><span class="chip">Measured confidence</span><button id="whyBtn" class="text-btn">Why? →</button></div></article>
+    <article class="card"><div class="card-head"><div><p class="eyebrow">TODAY'S FOCUS</p><h2>Wait for confirmation.</h2></div><span class="target">◎</span></div><p class="body-copy">Your strongest results come when you let the first 15 minutes establish direction.</p><div class="stats"><span><b>15 min</b> suggested wait</span><span><b>3 days</b> plan streak</span></div></article>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">PERSONALIZED FOR YOU</p><h2>Stocks to watch today</h2></div><button id="watchlistBtn" class="text-btn">View watchlist →</button></div>
+    <div class="watch-grid">
+      <article class="stock"><div class="stock-top"><div class="logo n">N</div><div><b>NVDA</b><small>NVIDIA</small></div><div class="price"><b>$181.42</b><small>+2.31%</small></div></div><svg viewBox="0 0 240 54"><path d="M0 46 C20 43 30 48 48 34 S76 39 96 27 S125 27 146 18 S180 19 199 9 S226 8 240 3"/></svg><p><span>Atlas</span> Strong relative volume near a key breakout level.</p></article>
+      <article class="stock"><div class="stock-top"><div class="logo q">Q</div><div><b>QQQ</b><small>Nasdaq 100</small></div><div class="price"><b>$456.21</b><small>+0.89%</small></div></div><svg viewBox="0 0 240 54"><path d="M0 41 C20 44 30 34 48 37 S76 23 96 27 S126 18 147 21 S180 13 199 15 S226 8 240 10"/></svg><p><span>Atlas</span> Useful confirmation for broader technology strength.</p></article>
+      <article class="stock"><div class="stock-top"><div class="logo a">A</div><div><b>AAPL</b><small>Apple</small></div><div class="price"><b>$214.62</b><small>+1.01%</small></div></div><svg viewBox="0 0 240 54"><path d="M0 44 C20 40 30 46 48 35 S76 31 96 30 S126 34 146 23 S180 21 199 14 S226 13 240 6"/></svg><p><span>Atlas</span> Watching for continuation above yesterday's high.</p></article>
     </div>
-  </div>
-  <div id="app" class="app-shell">
-    <aside class="desktop-sidebar">
-      <div class="brand brand-sidebar">
-        <div class="atlas-mark">
-          <svg class="atlas-logo-svg" viewBox="0 0 100 100" role="img" aria-label="Atlas holding a globe of market candles">
-            <circle cx="50" cy="32" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M25 32h50M50 7v50M31 17c12 8 26 8 38 0M31 47c12-8 26-8 38 0" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".75"/>
-            <path d="M35 43V31M45 40V24M55 36V19M65 31V14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-            <path d="M30 72c8-12 11-17 20-18 9 1 12 6 20 18M28 61 14 43M72 61l14-18M38 88l7-17h10l7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="50" cy="61" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </div>
-        <div>
-          <div class="wordmark">TERMINAL</div>
-          <div class="wordmark-sub">ATLAS</div>
-        </div>
-      </div>
+  </section>
 
-      <nav class="sidebar-nav" aria-label="Desktop navigation">
-        <button class="nav-button active" data-nav="home"><span>⌂</span>Home</button>
-        <button class="nav-button" data-nav="markets"><span>⌁</span>Markets</button>
-        <button class="nav-button" data-nav="atlas"><span>◉</span>Atlas</button>
-        <button class="nav-button" data-nav="journal"><span>▤</span>Journal</button>
-        <button class="nav-button" data-nav="more"><span>•••</span>More</button>
-      </nav>
+  <section class="two-col lower">
+    <article class="card"><div class="section-head"><div><p class="eyebrow">LIVE CONTEXT</p><h2>What's moving the market</h2></div><span class="updating"><i></i> Updating</span></div><div class="news"><div><small>OVERNIGHT</small><p>Technology futures lead after stronger-than-expected earnings.</p><span>↗</span></div><div><small>8:30 ET</small><p>Economic data may create volatility before the opening bell.</p><span>↗</span></div><div><small>2:00 ET</small><p>Federal Reserve commentary is today's main scheduled risk.</p><span>↗</span></div></div></article>
+    <article class="card plan"><div><p class="eyebrow">TODAY'S PLAN</p><h2>Protect clarity.</h2><p class="body-copy">Observe first. Trade only when price, volume, and the broader market agree.</p></div><label><input type="checkbox" checked> Review top 3 watchlist names</label><label><input type="checkbox"> Mark key levels before the open</label><label><input type="checkbox"> Write your maximum risk</label><blockquote>“Patience is still a position.” <span>— Atlas</span></blockquote></article>
+  </section>
+</main>
+</div>
 
-      <div class="sidebar-profile">
-        <strong>Leo</strong>
-        <span>$300.00 sample account</span>
-        <span>PDT: 3 / 3</span>
-      </div>
-    </aside>
+<button id="atlasOrb" class="atlas-orb">A<i></i></button>
+<aside id="atlasPanel" class="atlas-panel">
+  <div class="panel-head"><div class="atlas-id"><span>A</span><div><b>Atlas</b><small><i></i> Watching live context</small></div></div><button id="closePanel">×</button></div>
+  <div class="context">You are viewing <b>Home · Morning Brief</b></div>
+  <div class="chat"><div class="message"><p>Good morning, Leo.</p><p>The market has not opened yet. Technology is leading pre-market, but I would still wait for confirmation after the bell.</p><p>Would you like the 30-second version?</p></div><div class="quick"><button data-answer="brief">Start 30-sec brief</button><button data-answer="watch">Explain top 3</button><button data-answer="plan">Review my plan</button></div><div id="response"></div></div>
+  <form id="chatForm"><input id="chatInput" placeholder="Ask Atlas anything…"><button>↑</button></form>
+</aside>
 
-    <main class="main-content">
-      <section class="screen active" data-screen="home">
-        <header class="topbar">
-          <div class="mobile-brand brand">
-            <div class="atlas-mark small">
-              <svg class="atlas-logo-svg" viewBox="0 0 100 100" aria-hidden="true">
-                <circle cx="50" cy="32" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M25 32h50M50 7v50" fill="none" stroke="currentColor"/>
-                <path d="M35 43V31M45 40V24M55 36V19M65 31V14" stroke="currentColor" stroke-width="4"/>
-                <path d="M30 72c8-12 11-17 20-18 9 1 12 6 20 18M28 61 14 43M72 61l14-18" fill="none" stroke="currentColor" stroke-width="3"/>
-                <circle cx="50" cy="61" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </div>
-            <div>
-              <div class="wordmark">TERMINAL</div>
-              <div class="wordmark-sub">ATLAS</div>
-            </div>
-          </div>
-          <button class="icon-button" type="button" aria-label="Notifications">♢</button>
-        </header>
-
-        <div class="greeting-row">
-          <div class="greeting">
-            <div class="eyebrow">MONDAY · PRE-MARKET</div>
-            <h1>Good morning, Leo.</h1>
-            <p>Atlas has reduced the market into the decisions that matter.</p>
-          </div>
-          <div class="market-status">
-            <span class="status-dot"></span>
-            Market opens in <strong>42m</strong>
-          </div>
-        </div>
-
-        <article class="daily-plan">
-          <div>
-            <div class="eyebrow">TODAY'S PLAN</div>
-            <h2>Be selective. Let confirmation come to you.</h2>
-            <p>Technology is leading, but volume is still developing. Your best decision may be waiting through the opening noise.</p>
-          </div>
-          <div class="plan-rules">
-            <span><b>01</b> No entries before confirmation</span>
-            <span><b>02</b> Maximum risk: 1% per setup</span>
-            <span><b>03</b> Review before the next trade</span>
-          </div>
-        </article>
-
-        <div class="dashboard-grid">
-          <div class="dashboard-column">
-            <article class="card bias-card">
-              <div>
-                <div class="section-title">Market Bias</div>
-                <div class="bias-value">Moderately Bullish</div>
-                <div class="subtle">Confidence: 7.8/10</div>
-                <p class="subtle">Three setups deserve attention. None require immediate action.</p>
-              </div>
-              <svg class="atlas-hero" viewBox="0 0 100 100" aria-label="Atlas market emblem">
-                <circle cx="50" cy="31" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M25 31h50M50 6v50M32 16c11 8 25 8 36 0M32 46c11-8 25-8 36 0" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".75"/>
-                <path d="M35 43V31M45 40V24M55 36V19M65 31V14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                <path d="M30 72c8-12 11-17 20-18 9 1 12 6 20 18M28 61 14 43M72 61l14-18M38 90l7-19h10l7 19" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                <circle cx="50" cy="61" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </article>
-
-            <div class="metric-grid">
-              <div class="metric"><span>SPY</span><strong>530.62</strong><em>+0.77%</em></div>
-              <div class="metric"><span>QQQ</span><strong>456.21</strong><em>+0.89%</em></div>
-              <div class="metric"><span>DIA</span><strong>398.67</strong><em>+0.49%</em></div>
-            </div>
-
-            <article class="card">
-              <div class="section-title">What's Moving the Market</div>
-              <div class="market-list">
-                <div class="bullet-row"><i></i><span>CPI cooled slightly more than expected.</span></div>
-                <div class="bullet-row"><i></i><span>Technology is leading early strength.</span></div>
-                <div class="bullet-row"><i></i><span>A Fed speaker at 1:30 PM may increase volatility.</span></div>
-                <div class="bullet-row"><i></i><span>Oil remains elevated on geopolitical concerns.</span></div>
-              </div>
-            </article>
-          </div>
-
-          <div class="dashboard-column">
-            <article class="card">
-              <div class="section-head">
-                <div><div class="section-title">Today's Focus</div><div class="section-subtitle">Ranked by fit—not hype.</div></div>
-                <button class="text-button" data-action="view-focus">View All</button>
-              </div>
-              <div class="watch-list">
-                <button class="stock-row" data-stock="NVDA">
-                  <span class="ticker-icon">NV</span>
-                  <span class="stock-name"><strong>NVDA</strong><small>Bullish pullback · Awaiting confirmation</small></span>
-                  <span class="stock-price">181.42<small>+2.31%</small></span>
-                </button>
-                <button class="stock-row" data-stock="QQQ">
-                  <span class="ticker-icon">Q</span>
-                  <span class="stock-name"><strong>QQQ</strong><small>Breakout setup · Relative strength</small></span>
-                  <span class="stock-price">456.21<small>+0.89%</small></span>
-                </button>
-                <button class="stock-row" data-stock="AAPL">
-                  <span class="ticker-icon">A</span>
-                  <span class="stock-name"><strong>AAPL</strong><small>Continuation · Watch volume</small></span>
-                  <span class="stock-price">214.62<small>+1.01%</small></span>
-                </button>
-              </div>
-            </article>
-
-            <article class="card daytrade-row">
-              <div>
-                <div class="section-title">Day Trades Remaining</div>
-                <div class="large-value">3 / 3</div>
-                <div class="subtle">Resets in 2d 4h 15m</div>
-              </div>
-              <div class="progress-ring" aria-label="Three of three day trades remain"></div>
-            </article>
-
-            <article class="card atlas-note">
-              <div class="section-title">Atlas Note</div>
-              <p>Patience may produce better entries than activity today.</p>
-              <button class="primary-button" data-nav="atlas">Ask Atlas</button>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="screen" data-screen="markets">
-        <header class="topbar">
-          <div><h1>Markets</h1><p>Understand the environment before the setup.</p></div>
-          <button class="icon-button" aria-label="Search">⌕</button>
-        </header>
-
-        <div class="tabs" data-tab-group="markets">
-          <button class="tab-button active" data-tab="overview">Overview</button>
-          <button class="tab-button" data-tab="indices">Indices</button>
-          <button class="tab-button" data-tab="sectors">Sectors</button>
-          <button class="tab-button" data-tab="futures">Futures</button>
-        </div>
-
-        <div class="tab-panel active" data-panel="overview">
-          <div class="dashboard-grid">
-            <div>
-              <article class="card">
-                <div class="section-title">Market Overview</div>
-                <p>Futures are higher as cooler inflation data supports technology sentiment. Conditions are constructive, but the afternoon calendar could change the tone.</p>
-                <div class="metric-grid">
-                  <div class="metric"><span>SPX</span><strong>5,297.10</strong><em>+0.68%</em></div>
-                  <div class="metric"><span>NDX</span><strong>18,862.40</strong><em>+0.81%</em></div>
-                  <div class="metric"><span>VIX</span><strong>13.21</strong><em class="red">-2.14%</em></div>
-                </div>
-              </article>
-
-              <article class="card">
-                <div class="section-title">Sector Performance</div>
-                <div class="sector-row"><span>Technology</span><div class="bar-track"><i style="width:88%"></i></div><em>+1.21%</em></div>
-                <div class="sector-row"><span>Communication</span><div class="bar-track"><i style="width:72%"></i></div><em>+0.89%</em></div>
-                <div class="sector-row"><span>Financials</span><div class="bar-track"><i style="width:48%"></i></div><em>+0.35%</em></div>
-                <div class="sector-row"><span>Industrials</span><div class="bar-track"><i style="width:34%"></i></div><em>+0.17%</em></div>
-                <div class="sector-row"><span>Energy</span><div class="bar-track"><i class="down" style="width:24%"></i></div><em class="red">-0.21%</em></div>
-              </article>
-            </div>
-
-            <article class="card">
-              <div class="section-title">Market Heatmap</div>
-              <div class="heatmap">
-                <button class="heat-cell" data-symbol-context="AAPL">AAPL<small>+1.01%</small></button>
-                <button class="heat-cell" data-symbol-context="MSFT">MSFT<small>+0.68%</small></button>
-                <button class="heat-cell strong" data-symbol-context="NVDA">NVDA<small>+2.31%</small></button>
-                <button class="heat-cell down" data-symbol-context="TSLA">TSLA<small>-0.21%</small></button>
-                <button class="heat-cell" data-symbol-context="AMD">AMD<small>+1.32%</small></button>
-                <button class="heat-cell" data-symbol-context="GOOGL">GOOGL<small>+0.48%</small></button>
-                <button class="heat-cell" data-symbol-context="META">META<small>+0.35%</small></button>
-                <button class="heat-cell down" data-symbol-context="XOM">XOM<small>-0.31%</small></button>
-              </div>
-              <div id="heatmap-context" class="context-box">Select a symbol for Atlas context.</div>
-            </article>
-          </div>
-        </div>
-
-        <div class="tab-panel" data-panel="indices">
-          <article class="card">
-            <div class="section-title">Major Indices</div>
-            <div class="analysis-table">
-              <span>S&amp;P 500</span><strong class="green">+0.68%</strong>
-              <span>Nasdaq 100</span><strong class="green">+0.81%</strong>
-              <span>Dow Jones</span><strong class="green">+0.49%</strong>
-              <span>Russell 2000</span><strong class="green">+0.34%</strong>
-            </div>
-          </article>
-        </div>
-
-        <div class="tab-panel" data-panel="sectors">
-          <article class="card">
-            <div class="section-title">Atlas Sector Read</div>
-            <p>Technology has the strongest alignment today. Energy and utilities are weakening. Atlas would prioritize quality setups inside strong sectors rather than chase isolated movers.</p>
-          </article>
-        </div>
-
-        <div class="tab-panel" data-panel="futures">
-          <article class="card">
-            <div class="section-title">Futures Context</div>
-            <div class="metric-grid">
-              <div class="metric"><span>ES</span><strong>5,310</strong><em>+0.52%</em></div>
-              <div class="metric"><span>NQ</span><strong>18,904</strong><em>+0.74%</em></div>
-              <div class="metric"><span>CL</span><strong>79.40</strong><em class="red">-0.18%</em></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="screen" data-screen="atlas">
-        <header class="topbar">
-          <div class="brand">
-            <div class="atlas-mark small">
-              <svg class="atlas-logo-svg" viewBox="0 0 100 100" aria-hidden="true">
-                <circle cx="50" cy="32" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M25 32h50M50 7v50" fill="none" stroke="currentColor"/>
-                <path d="M35 43V31M45 40V24M55 36V19M65 31V14" stroke="currentColor" stroke-width="4"/>
-                <path d="M30 72c8-12 11-17 20-18 9 1 12 6 20 18M28 61 14 43M72 61l14-18" fill="none" stroke="currentColor" stroke-width="3"/>
-                <circle cx="50" cy="61" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </div>
-            <div><h1>Atlas</h1><p>Your trading guide</p></div>
-          </div>
-          <button class="icon-button">☷</button>
-        </header>
-
-        <div class="tabs" data-tab-group="atlas">
-          <button class="tab-button active" data-tab="chat">Chat</button>
-          <button class="tab-button" data-tab="context">Trade Context</button>
-        </div>
-
-        <div class="tab-panel active" data-panel="chat">
-          <article class="card">
-            <div class="section-title">Current Context</div>
-            <div class="analysis-table">
-              <span>Market</span><strong class="teal">Moderately Bullish</strong>
-              <span>Volatility</span><strong>Normal</strong>
-              <span>Volume</span><strong>Below Average</strong>
-              <span>Focus</span><strong>NVDA</strong>
-            </div>
-          </article>
-
-          <div id="chat-window" class="chat-window" aria-live="polite">
-            <div class="message user">Is this still a good entry for NVDA?</div>
-            <div class="message atlas">The setup is still valid, but price is extended from VWAP and volume has started to taper.
-
-I’d wait for confirmation above $183.10 before entering.
-
-• Entry: $183.10+
-• Stop: $178.20
-• Target 1: $188.60
-• Target 2: $194.25
-• Risk/reward: 2.3:1
-
-No trade is also a valid decision.</div>
-          </div>
-
-          <div class="quick-actions">
-            <button class="chip" data-prompt="Show me the chart context.">Show Chart</button>
-            <button class="chip" data-prompt="What are the key levels?">Key Levels</button>
-            <button class="chip" data-prompt="How could today's news affect this setup?">News Impact</button>
-          </div>
-
-          <div class="chat-input-row">
-            <input id="atlas-input" class="chat-input" placeholder="Ask Atlas anything..." />
-            <button id="send-atlas" class="primary-button">Send</button>
-          </div>
-        </div>
-
-        <div class="tab-panel" data-panel="context">
-          <article class="card">
-            <div class="section-title">Trade Context</div>
-            <div class="analysis-table">
-              <span>Selected setup</span><strong>NVDA Bullish Pullback</strong>
-              <span>Status</span><strong class="teal">Watching</strong>
-              <span>Account fit</span><strong>Moderate risk</strong>
-              <span>Remaining day trades</span><strong>3</strong>
-              <span>Atlas view</span><strong>Wait for confirmation</strong>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="screen" data-screen="journal">
-        <header class="topbar">
-          <div><h1>Journal</h1><p>Compare yourself only to your past self.</p></div>
-          <button class="icon-button">⋮</button>
-        </header>
-
-        <div class="tabs" data-tab-group="journal">
-          <button class="tab-button active" data-tab="reflection">Reflection</button>
-          <button class="tab-button" data-tab="trades">Trades</button>
-          <button class="tab-button" data-tab="lessons">Lessons</button>
-        </div>
-
-        <div class="tab-panel active" data-panel="reflection">
-          <article class="card">
-            <div class="section-head">
-              <div><div class="section-title">Weekly Reflection</div><div class="subtle">May 12 – May 16</div></div>
-              <button id="full-reflection" class="text-button">View Full Report</button>
-            </div>
-            <div class="reflection-score">
-              <div class="score-number">83<span>/100</span></div>
-              <div><strong>Great week, Leo.</strong><p>You stayed patient, followed your plan, and avoided revenge trades.</p></div>
-            </div>
-            <div class="metric-grid">
-              <div class="metric"><span>Discipline</span><strong class="teal">88</strong><em>▲ 12</em></div>
-              <div class="metric"><span>Risk</span><strong class="teal">80</strong><em>▲ 8</em></div>
-              <div class="metric"><span>Execution</span><strong class="teal">81</strong><em>▲ 9</em></div>
-            </div>
-            <div id="reflection-details" class="context-box hidden">You followed your entry plan on 6 of 7 trades, respected each hard stop, and avoided two low-quality revenge entries. Your next focus should be letting valid winners develop.</div>
-          </article>
-
-          <article class="card reflection-card"><div class="round-icon">☆</div><div><div class="section-title">Top Strength</div><strong>Patience</strong><p>You waited for higher-probability setups.</p></div></article>
-          <article class="card reflection-card"><div class="round-icon">↗</div><div><div class="section-title">Biggest Improvement</div><strong>Stop Losses</strong><p>You placed stops more consistently and respected your risk.</p></div></article>
-          <article class="card reflection-card"><div class="round-icon">◎</div><div><div class="section-title">Focus Area</div><strong>Trade Management</strong><p>Work on taking partial profits without cutting strong winners too early.</p></div></article>
-        </div>
-
-        <div class="tab-panel" data-panel="trades">
-          <article class="card">
-            <div class="section-title">Recent Trades</div>
-            <div class="analysis-table">
-              <span>NVDA · Long</span><strong class="green">+$412.00</strong>
-              <span>QQQ · Long</span><strong class="green">+$186.50</strong>
-              <span>AAPL · Long</span><strong class="green">+$128.20</strong>
-              <span>TSLA · Short</span><strong class="red">-$97.30</strong>
-            </div>
-          </article>
-        </div>
-
-        <div class="tab-panel" data-panel="lessons">
-          <article class="card">
-            <div class="section-title">Lessons Identified by Atlas</div>
-            <div class="market-list">
-              <div class="bullet-row"><i></i><span>Your best trades began with a clear invalidation level.</span></div>
-              <div class="bullet-row"><i></i><span>You perform better when you wait at least 15 minutes after the open.</span></div>
-              <div class="bullet-row"><i></i><span>Your most common mistake is taking profits before the thesis changes.</span></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="screen" data-screen="more">
-        <header class="topbar"><div><h1>More</h1><p>Your profile, memory, and preferences.</p></div></header>
-        <div class="dashboard-grid">
-          <article class="card">
-            <div class="section-title">Trading DNA</div>
-            <div class="analysis-table">
-              <span>Style</span><strong>Swing-focused</strong>
-              <span>Risk</span><strong>Moderate</strong>
-              <span>Patience</span><strong>Improving</strong>
-              <span>Common mistake</span><strong>Early exits</strong>
-              <span>Current goal</span><strong>Trade management</strong>
-            </div>
-          </article>
-          <article class="card">
-            <div class="section-title">Atlas Memory</div>
-            <div class="market-list">
-              <div class="bullet-row"><i></i><span>Started prioritizing confirmation over anticipation.</span></div>
-              <div class="bullet-row"><i></i><span>Reduced emotional entries over the last three weeks.</span></div>
-              <div class="bullet-row"><i></i><span>Current weekly goal: let valid winners develop.</span></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="screen" data-screen="stock">
-        <header class="stock-detail-header">
-          <button class="back-button" data-action="back">‹</button>
-          <div><h1 id="stock-title">NVDA</h1><p id="stock-company">NVIDIA Corporation</p></div>
-          <button class="icon-button">☆</button>
-        </header>
-
-        <div class="tabs" data-tab-group="stock">
-          <button class="tab-button active" data-tab="analysis">Analysis</button>
-          <button class="tab-button" data-tab="overview">Overview</button>
-          <button class="tab-button" data-tab="news">News</button>
-        </div>
-
-        <div class="tab-panel active" data-panel="analysis">
-          <div id="stock-price" class="price-main">181.42</div>
-          <div id="stock-change" class="green">+4.10 (+2.31%)</div>
-
-          <div class="chart-box">
-            <svg class="chart-svg" viewBox="0 0 600 190" role="img" aria-label="Illustrative intraday price chart">
-              <path d="M0 165 L40 144 L72 151 L105 125 L132 134 L168 111 L205 120 L240 92 L278 98 L312 78 L350 85 L385 63 L418 71 L455 45 L490 54 L525 31 L560 38 L600 20" fill="none" stroke="var(--teal)" stroke-width="4"/>
-              <path d="M0 165 L40 144 L72 151 L105 125 L132 134 L168 111 L205 120 L240 92 L278 98 L312 78 L350 85 L385 63 L418 71 L455 45 L490 54 L525 31 L560 38 L600 20 L600 190 L0 190 Z" fill="rgba(33,217,210,.08)"/>
-            </svg>
-          </div>
-
-          <div class="dashboard-grid">
-            <article class="card">
-              <div class="section-head"><div class="section-title">Our Analysis</div><span class="teal">● Watching</span></div>
-              <div class="analysis-table">
-                <span>Entry</span><strong>183.10</strong>
-                <span>Stop</span><strong class="red">178.20</strong>
-                <span>Target 1</span><strong class="green">188.60</strong>
-                <span>Target 2</span><strong>194.25</strong>
-                <span>Risk / Reward</span><strong>2.3 : 1</strong>
-                <span>Confidence</span><strong class="teal">81%</strong>
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="section-title">Why This Setup?</div>
-              <div class="market-list">
-                <div class="bullet-row"><i></i><span>Holding above VWAP</span></div>
-                <div class="bullet-row"><i></i><span>Strong relative volume</span></div>
-                <div class="bullet-row"><i></i><span>Breaking the previous day's high</span></div>
-                <div class="bullet-row"><i></i><span>Positive semiconductor context</span></div>
-              </div>
-            </article>
-          </div>
-
-          <button class="primary-button wide" data-action="ask-stock">Ask Atlas About This Setup</button>
-        </div>
-
-        <div class="tab-panel" data-panel="overview">
-          <article class="card"><div class="section-title">Company Overview</div><p id="stock-overview">NVIDIA is being monitored because its trend, sector strength, and relative volume align with your preferred swing-trading profile.</p></article>
-        </div>
-
-        <div class="tab-panel" data-panel="news">
-          <article class="card"><div class="section-title">News Impact</div><p>Recent semiconductor commentary is supportive, but Atlas is not treating headlines as an entry signal. Price confirmation remains necessary.</p></article>
-        </div>
-      </section>
-    </main>
-
-    <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
-      <button class="nav-button active" data-nav="home"><span>⌂</span>Home</button>
-      <button class="nav-button" data-nav="markets"><span>⌁</span>Markets</button>
-      <button class="nav-button" data-nav="atlas"><span>◉</span>Atlas</button>
-      <button class="nav-button" data-nav="journal"><span>▤</span>Journal</button>
-      <button class="nav-button" data-nav="more"><span>•••</span>More</button>
-    </nav>
-  </div>
-
-  <script src="app.js"></script>
+<div id="briefModal" class="modal"><div class="modal-card"><button id="closeBrief" class="x">×</button><div class="modal-orb">A</div><p class="eyebrow">ATLAS MORNING BRIEF</p><h2>Good morning, Leo.</h2><div class="progress"><span id="progress"></span></div><div id="script" class="script"><p>The market opens soon.</p><p>Technology is leading pre-market, with NVIDIA showing the strongest relative volume on your watchlist.</p><p>Economic data before the open and Federal Reserve commentary this afternoon are today's main risk events.</p><p>Your focus: wait for the first 15 minutes and trade only after confirmation.</p></div><div class="modal-actions"><button id="pause" class="secondary">Pause</button><button id="done" class="primary">I'm ready</button></div></div></div>
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
 </body>
 </html>

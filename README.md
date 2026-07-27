@@ -1,31 +1,27 @@
-# Terminal Atlas — Build 0.3
+# Terminal V2 — The Atlas Experience
 
-This is the first polished website build of Terminal.
+This package contains a responsive prototype of Terminal Version 2.
 
-## The easiest way to open it
+## Included
+- Live greeting, date, and time
+- Live weekday U.S. market open/close countdown
+- Atlas Morning Brief interaction
+- Floating Atlas assistant
+- Atlas Outlook and Today's Focus
+- Top 3 stocks to watch
+- Market context and daily plan
+- Responsive desktop and mobile design
 
-1. Unzip the downloaded folder.
-2. Open the folder named `terminal-atlas-v0.3`.
-3. Double-click `index.html`.
-4. Press **Enter Terminal**.
+## Important
+Stock prices, news, and Atlas analysis are sample prototype data. The date, time, greeting, and market countdown run live in the browser.
 
-## What works
+## Upload to GitHub
+1. Download and unzip `terminal-v2.zip`.
+2. Open your existing Terminal GitHub repository.
+3. Delete old files that are no longer used.
+4. Upload the **contents** of the unzipped folder, not the folder itself.
+5. Confirm the repository root contains `index.html`, `styles.css`, `script.js`, and `README.md`.
+6. Commit the changes.
+7. Vercel should detect the commit and redeploy automatically.
 
-- Desktop and mobile layouts
-- Home, Markets, Atlas, Journal, More, and Stock pages
-- Clickable navigation
-- Sample Atlas conversations
-- Market heatmap interactions
-- Weekly Reflection details
-- A polished opening screen
-- A clearer daily trading plan
-
-## What is still pretend
-
-- Stock prices
-- News
-- AI responses
-- User accounts
-- Saved journal information
-
-This version is meant to help us judge the look, layout, and experience before connecting real services.
+No build command is required. If Vercel asks for a framework, select **Other**.
